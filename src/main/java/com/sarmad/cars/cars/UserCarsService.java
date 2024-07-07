@@ -1,14 +1,15 @@
 package com.sarmad.cars.cars;
 
 
-import com.sarmad.cars.models.*;
+import com.sarmad.cars.models.CarModel;
+import com.sarmad.cars.models.UserCar;
+import com.sarmad.cars.models.User;
+import com.sarmad.cars.models.UserCarsRepository;
+import com.sarmad.cars.models.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

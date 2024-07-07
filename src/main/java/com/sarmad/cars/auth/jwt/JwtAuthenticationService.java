@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +23,11 @@ public class JwtAuthenticationService {
 
 
     public AuthenticationResponse login(LoginRequest request) {
-        System.out.println("LoginRequest: " + request);
         Authentication auth = this.authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getLoginId(), request.getPassword())
         );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
 
         var user = userRepository.findByLoginId(request.getLoginId()).orElseThrow(() -> new RuntimeException("User not found"));
 

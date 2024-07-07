@@ -1,6 +1,7 @@
 package com.sarmad.cars.cars;
 
 
+import com.sarmad.cars.monitor.LogAction;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ public class UserCarsController {
     private final UserCarsService userCarsService;
 
     @GetMapping()
+    @LogAction("search_user_cars")
     public ResponseEntity<List<UserCarsSearchResponse>> getUserCars(
             @RequestParam(name = "first_name", required = true) String userFirstName,
             @RequestParam(name = "last_name", required = true) String userLastName,

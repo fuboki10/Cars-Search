@@ -25,6 +25,7 @@ public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
             "/api/v*/auth/**",
+            "/api/monitor/**",
     };
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
