@@ -28,8 +28,19 @@ services:
     networks:
         - cars-network
 
+  redis-stack:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+      - redis_data:/data
+    networks:
+        - cars-network
+
 volumes:
     mongodb_data: {}
+    redis_data: {}
 
 networks:
   cars-network:

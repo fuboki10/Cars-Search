@@ -70,6 +70,18 @@
 			<version>0.11.5</version>
 		</dependency>
 
+		<!-- For caching support -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<!-- For Redis integration -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
 		<dependency>
 			<groupId>org.mongodb</groupId>

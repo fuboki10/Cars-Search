@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Seeder {
     public static void main(String[] args) {
@@ -16,6 +17,8 @@ public class Seeder {
             MongoDatabase database = mongoClient.getDatabase("cars");
 
             System.out.println("Starting seeding...");
+
+            Random random = new Random();
 
             final String userPassword = getPassword();
 
@@ -43,9 +46,9 @@ public class Seeder {
             String[] carModelNames = new String[]{"Lanser", "Corolla", "Civic", "Accord", "Camry", "Altima", "Maxima", "Sentra"};
             for (int i = 0; i < 100_000; i++) {
                 carModelsList.add(new Document("MODEL_NAME", "Model" + i)
-                        .append("TYPE", carTypes[i % carTypes.length])
-                        .append("MANUFACTURER_YEAR", 1990 + (i % 30))
-                        .append("MODEL_NAME", carModelNames[i % carModelNames.length]));
+                        .append("TYPE", carTypes[random.nextInt(carTypes.length)])
+                        .append("MANUFACTURER_YEAR", 1990 + (random.nextInt(30)))
+                        .append("MODEL_NAME", carModelNames[random.nextInt(carModelNames.length)]));
             }
 
             var carIds = carModels.insertMany(carModelsList).getInsertedIds().values().stream().toList();
@@ -59,10 +62,10 @@ public class Seeder {
             List<Document> userCarsList = new ArrayList<>(2_000_000);
             String[] colors = new String[]{"Black", "White", "Red", "Blue", "Green", "Yellow", "Silver", "Gray"};
             for (int i = 0; i < 2_000_000; i++) {
-                userCarsList.add(new Document("USER_ID", userIds.get(i % 100_000).asObjectId().getValue().toHexString())
-                        .append("CAR_MODEL_ID", carIds.get(i % 100_000).asObjectId().getValue().toHexString())
+                userCarsList.add(new Document("USER_ID", userIds.get(random.nextInt(100_000)).asObjectId().getValue().toHexString())
+                        .append("CAR_MODEL_ID", carIds.get(random.nextInt(100_000)).asObjectId().getValue().toHexString())
                         .append("CAR_PLATE_NUMBER", "ABC" + i)
-                        .append("COLOR", colors[i % colors.length]));
+                        .append("COLOR", colors[random.nextInt(colors.length)]));
             }
 
             userCars.insertMany(userCarsList);
