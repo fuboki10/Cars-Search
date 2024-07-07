@@ -33,6 +33,8 @@ public class JwtAuthenticationService {
 
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
+                .message("Login successful")
+                .tokenType("Bearer")
                 .build();
     }
 
@@ -50,6 +52,8 @@ public class JwtAuthenticationService {
 
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
+                .message("Registration successful")
+                .tokenType("Bearer")
                 .build();
     }
 }

@@ -2,5 +2,10 @@ package com.sarmad.cars.models;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserCarsRepository extends MongoRepository<UserCars, String> {
+import java.util.List;
+
+public interface UserCarsRepository extends MongoRepository<UserCar, String> {
+    List<UserCar> findByUserIdIn(List<String> list);
+
+    List<UserCar> findByUserIdInAndCarPlateNumber(List<String> list, String carPlateNumber);
 }

@@ -1,8 +1,5 @@
-package com.sarmad.cars.api.v1;
+package com.sarmad.cars.auth;
 
-import com.sarmad.cars.auth.AuthenticationResponse;
-import com.sarmad.cars.auth.LoginRequest;
-import com.sarmad.cars.auth.RegisterRequest;
 import com.sarmad.cars.auth.jwt.JwtAuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

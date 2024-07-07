@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Data
 @Builder
@@ -22,10 +23,8 @@ public class User implements UserDetails {
     @Id
     private String id;
 
-    @Field("USER_ID")
-    private String userId;
-
     @Field("LOGIN_ID")
+    @Indexed(unique = true)
     private String loginId;
 
     @Field("FIRST_NAME,")
@@ -39,7 +38,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return new ArrayList<>();
     }
 
     @Override
