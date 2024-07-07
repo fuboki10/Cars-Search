@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -18,12 +19,14 @@ public class UserCar {
     private String id;
 
     @Field("USER_ID")
+    @Indexed
     private String userId;
 
     @Field("CAR_MODEL_ID")
     private String carModelId;
 
     @Field("CAR_PLATE_NUMBER")
+    @Indexed
     private String carPlateNumber;
 
     @Field("COLOR")

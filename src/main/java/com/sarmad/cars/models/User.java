@@ -27,7 +27,7 @@ public class User implements UserDetails {
     @Indexed(unique = true)
     private String loginId;
 
-    @Field("FIRST_NAME,")
+    @Field("FIRST_NAME")
     private String firstName;
 
     @Field("SECOND_NAME")
